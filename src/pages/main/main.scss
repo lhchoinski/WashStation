@@ -11,8 +11,8 @@ page-main {
             .title {
                 font-size: $sm-list-font-size;
                 font-weight: normal;
-                margin-top: 2px; 
-                margin-bottom: 2px; 
+                margin-top: 2px;
+                margin-bottom: 2px;
             }
 
             .subtitle {
@@ -20,6 +20,14 @@ page-main {
                 margin-bottom: 0px;
             }
         }
+    }
+
+    ion-title {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .scroll-content {
@@ -55,17 +63,17 @@ page-main {
 
             .zoom-in-btn {
                 background-color: white;
-                
+
                 ion-icon {
                     color: #666666;
                     font-size: 30px;
                     font-weight: bold;
                 }
             }
-    
+
             .zoom-out-btn {
-                background-color: white;    
-    
+                background-color: white;
+
                 ion-icon {
                     color: #666666;
                     font-size: 30px;
