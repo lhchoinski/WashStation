@@ -1,0 +1,774 @@
+@import "../../node_modules/ionic2-auto-complete/auto-complete";
+
+$font-color: #ffffff;
+$red-theme: #f53d3d; //rgb(245, 103, 120);
+$orange-theme: rgb(255, 148, 77);
+$green-theme: rgb(61, 254, 166);
+$blue-theme: rgb(13, 51, 72);
+$grey-theme: rgb(151, 151, 151);
+
+$toast-success: #d4edda;
+$toast-success-color-font: #155724;
+$toast-success-color-border: #c3e6cb;
+
+$toast-error: #f8d7da;
+$toast-error-color-font: #721c24;
+$toast-error-color-border: #f5c6cb;
+
+$toast-warning: #fff3cd;
+$toast-warning-color-font: #856404;
+$toast-warning-color-border: #ffeeba;
+
+$toast-info: #0c5460;
+$toast-info-color-font: #0c5460;
+$toast-info-color-border: #bee5eb;
+
+$xs-font-size: 1.2rem;
+$sm-font-size: 1.5rem;
+$sm-list-font-size: 1.6rem;
+$md-font-size: 2rem;
+$xl-font-size: 2.5rem;
+$xxl-font-size: 3.5rem;
+
+/* vietnamese */
+@font-face {
+  font-family: 'Exo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Exo Regular'), local('Exo-Regular'), url(../assets/fonts/4UaOrEtFpBISfH6jyDM.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Exo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Exo Regular'), local('Exo-Regular'), url(../assets/fonts/4UaOrEtFpBISfX6jyDM.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Exo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Exo Regular'), local('Exo-Regular'), url(../assets/fonts/4UaOrEtFpBISc36j.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.menu-item {
+  border-bottom: 1px solid $dark-grey-border !important;
+
+  .item-inner {
+    height: 60px !important;
+  }
+}
+
+#menu-header {
+  background-color: $light-blue !important;
+
+    p,
+    ion-icon {
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    .item-inner {
+      margin-left: 5px !important;
+    }
+}
+
+.item-arrow .item-inner {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2020'><path%20d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z'%20fill='%23c0c0c0'/></svg>") !important;
+}
+
+ion-footer::before {
+  background-image: none !important;
+}
+
+ion-footer {
+  border-top: 1px solid $dark-grey-border !important;
+}
+
+// START - Ios Specific styling rules
+ion-searchbar.searchbar.searchbar-ios {
+  background: white !important;
+}
+.header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
+  border-style: none !important;
+}
+.bar-button-ios.back-button-ios {
+  margin-right: 15px !important;
+}
+// END - Ios Specific styling rules
+
+ion-menu {
+  .scroll-content {
+    overflow-y: auto !important;
+    background-color: $light-background;
+
+    button.item {
+      background-color: $light-background !important;
+
+      .item-inner {
+        border-color: $dark-grey-border !important;        
+      }
+    }
+
+    ion-item {
+        background-color: $light-background !important;
+        
+        .item-inner {
+            border-color: $dark-grey-border !important;
+        }
+    }
+  }
+
+  ion-footer button {
+    background-color: $light-background !important;
+  }
+}
+
+.custom-alert {
+  .alert-message div {
+    margin-top: 10px;
+    font-size: 2.2rem;
+  }
+
+  .cancel-btn {
+    color: $light-blue !important;    
+  }
+
+  .ok-btn {
+    color: $light-blue !important;
+  }
+}
+
+ion-app.md {
+  font-family: "Exo", "Roboto", "Helvetica Neue", sans-serif !important;
+}
+
+// .laundry-modal {
+//   height: 200px !important;
+//   top: calc(100% - 200px) !important;
+// }
+
+.laundry-modal {
+  height: 220px !important;
+  top: calc(100% - 220px) !important;
+}
+
+ion-title .toolbar-title,
+.navbar-balance {
+  font-size: 1.8rem !important;
+}
+
+.input-alert {
+  .alert-title {
+    color: black !important;
+  }
+  
+  .alert-subtitle {
+    color: $grey-theme !important;
+    font-weight: normal;
+    font-size: 1.7rem;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .alert-message {
+    padding-bottom: 16px !important;
+  }
+}
+
+.box {
+  border: 1px solid black;
+}
+
+.alert-val-msg {
+  color: #f53d3d;
+  font-size: $sm-font-size;
+  text-align: center;
+}
+
+.side-menu-btn {
+  margin: 0 !important;
+  margin-left: -10px !important;
+}
+
+.background {
+  background-color: $light-blue;
+
+  .item-inner {
+    background-color: $light-blue !important; 
+    
+    ion-label,
+    ion-input { 
+      color: $light !important;
+    }
+  }
+}
+
+.btn-border {
+  border: 1px solid $light;
+}
+
+.btn-no-border {
+  color: $light;
+}
+
+#logout-btn .item-inner {
+  background-image: none !important;
+}
+
+#tabs-content {
+  .scroll-content {
+    // overflow-y: hidden;
+
+    .tabbar {
+      height: 0px !important;
+      
+      .tab-button {
+        min-height: 0px !important;
+      }
+    }
+  }
+}
+
+ion-label {
+  color: black !important;
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.invalid .item-inner {
+  border-bottom: 2px solid #f53d3d !important;
+  box-shadow: none !important;
+}
+
+.invalid .checkbox-icon {
+  border-color: #f53d3d !important;
+}
+
+.laundry-name {
+  color: black !important;
+}
+
+.laundry-addr {
+  color: $grey-theme !important;
+  font-weight: normal;
+  font-size: 1.8rem;
+  margin-top: 5px;
+}
+
+.alert-title {
+  font-size: 2.2rem !important;
+
+  h2 {
+    font-size: 2.2rem !important;    
+  }
+}
+
+.alert-message,
+.loading-content {
+  font-size: 1.7rem !important;
+}
+
+// Table class -----------------------------------------------------------------
+.table {
+  display: table;
+  width: 100% !important;
+
+  .table-row {
+    display: table-row;
+  }
+
+  .table-cell {
+    display: table-cell;
+    vertical-align: middle !important;
+  }
+}
+
+.table-no-width {
+  display: table;
+  margin: 0 auto;
+  
+  .table-row {
+    display: table-row;
+  }
+
+  .table-cell {
+    display: table-cell;
+    vertical-align: middle !important;
+  }
+}
+// -----------------------------------------------------------------------------
+
+.centered-img {
+  display: block;
+  margin: 0 auto;
+}
+
+.machine-btn {
+  height: 100px;
+  margin-bottom: 16px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.index-font {
+  color: $font-color;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.xl-font {
+  color: $font-color;
+  font-weight: normal;
+  font-size: 2.2rem;
+}
+
+.md-font {
+  color: $font-color;
+  font-weight: normal;
+  font-size: 2rem;
+}
+
+.sm-font {
+  color: $font-color;
+  font-weight: normal;
+  font-size: 1.6rem;
+}
+
+.md-btn {
+  min-height: 60px;
+  border-radius: 0px;
+  border-width: 2px;
+}
+
+.machine-index-ok {
+  margin: 0 auto;
+  height: 47px;
+  width: 47px;
+  border-radius: 50%;
+  background-color: $green-theme;
+  vertical-align: middle;
+  line-height: 49px;
+}
+
+.machine-index-n-ok {
+    margin: 0 auto;
+    height: 47px;
+    width: 47px;
+    border-radius: 50%;
+    background-color: $red-theme;
+    vertical-align: middle;
+    line-height: 49px;
+}
+
+.machine-index-res {
+    margin: 0 auto;
+    height: 47px;
+    width: 47px;
+    border-radius: 50%;
+    background-color: $orange-theme;
+    vertical-align: middle;
+    line-height: 49px;
+}
+
+.machine-n-ok {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0px;
+  border-color: $red-theme;
+}
+
+.machine-issue {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0px;
+  border-color: gray;
+}
+
+.machine-index-issue {
+  margin: 0 auto;
+  height: 47px;
+  width: 47px;
+  border-radius: 50%;
+  background-color: gray;
+  vertical-align: middle;
+  line-height: 49px;
+}
+
+.machine-ok {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0px;
+  border-color: $green-theme;
+}
+
+.machine-res {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0px;
+  border-color: $orange-theme;
+}
+
+.align-left {
+  text-align: left !important;
+}
+.centered {
+  text-align: center !important;
+}
+.align-right {
+  text-align: right !important;
+}
+
+.backgnd {
+  background-image: url('../assets/imgs/fundo.jpg') !important;
+  background-size: 100% 100%;
+}
+
+.menu-btn {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 0px !important;
+  border-width: 0px !important;
+  height: 100% !important;
+}
+
+.menu-img {
+  width:50% !important;
+  // margin: 20px 0px;
+}
+
+.menu-img-buy-card {
+  // width: 50% !important;
+  width: 70px !important;
+  margin: 15px 0px;
+}
+
+.menu-img-recharge-card {
+  width: 70px !important;
+  margin: 20px 0px;
+}
+
+// ion-app.platform-android {
+//   .modal-close-btn {
+//     color: $font-color;
+//     font-size: 2.5rem;
+//   }
+
+//   page-about {
+//     ion-navbar {
+//       height: 130px;
+  
+//       button {
+//           position: absolute;
+//           top: 10px !important;
+//       }
+//     }
+
+//     .logo-container {
+//       position: absolute;
+//       width: 100%;
+//       right: 0;
+//       top: 20px;
+//       background-color: $light-blue;
+//       height: 110px;
+
+//       img { height: 90px; }
+//     }
+
+//     .scroll-content {
+//       overflow-y: auto !important;
+//       margin-top: 130px !important;
+//     }
+//   }
+// }
+
+// ion-app.platform-ios {
+//   .modal-close-btn {
+//     margin-top: 3px;    
+//     color: $font-color;
+//     font-size: 3.5rem;
+//   }
+
+//   page-about {
+//     ion-navbar {
+//       height: 140px;
+  
+//       button {
+//           position: absolute;
+//           top: 20px !important;
+//       }
+//     }
+
+//     .logo-container {
+//       position: absolute;
+//       width: 100%;
+//       right: 0;
+//       top: 30px;
+//       background-color: $light-blue;
+//       height: 110px;
+
+//       img { height: 90px; }
+//     }
+
+//     .scroll-content {
+//       overflow-y: auto !important;
+//       margin-top: 140px !important;
+//     }
+//   }
+// }
+
+.money-icon {
+  height: 30px;
+}
+
+.machine-img-md {
+  width: 100% !important;
+}
+
+.program-btn {
+  min-height: 60px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.selection {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0px;
+  border-color: $green-theme;
+}
+
+.card-balance-box {
+  background-color: rgb(240, 240, 240);
+  border: 2px solid rgb(151, 151, 151);
+  margin: 0 15px;
+}
+
+.red {
+  color: $red-theme !important;
+}
+
+.blue {
+  color: $blue-theme !important;
+}
+
+.black {
+  color: #000000 !important;
+}
+
+// Orders classes --------------------------------------------------------------
+.order-item {
+  display: table;
+  height: 75px !important;
+  width: 100% !important;
+
+  .delete-elem {
+    width: 75px !important;
+  }
+
+  .price-elem {
+    width: 120px !important;
+  }
+
+  .sm-delete-elem {
+    width: 45px !important;
+  }
+
+  .sm-price-elem {
+    width: 70px !important;
+  }
+
+  .order-elem {
+    display: table-cell;
+    vertical-align: middle !important;
+
+    .price-logo {
+      height: 30px;
+      width: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .sm-price-logo {
+      height: 20px;
+      width: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .price {
+      color: $grey-theme;
+      font-size: 3rem;
+    }
+
+    .title {
+      color: $blue-theme;
+      font-weight: normal;
+      font-size: 20px;
+    }
+
+    .description {
+      margin-top: 5px;
+      color: $grey-theme;
+      font-weight: normal;
+      font-size: 1.8rem;
+    }
+
+    .sm-price {
+      color: $grey-theme;
+      font-size: 13px;
+    }
+
+    .sm-title {
+      color: $blue-theme;
+      font-weight: normal;
+      font-size: 2.2rem;
+    }
+
+    .xl-title {
+      color: $blue-theme;
+      font-weight: normal;
+      font-size: 3rem;
+    }
+
+    .sm-description {
+      color: $grey-theme;
+      font-weight: normal;
+      font-size: 13px;
+    }
+
+    .delete-order-img {
+      height: 25px;
+      width: auto;
+    }
+
+    .sm-delete-order-img {
+      height: 30px;
+      width: auto;
+    }
+  }
+}
+// -----------------------------------------------------------------------------
+
+.missing-balance-box {
+  height: 130px;
+  color: $font-color;
+  background-color: $red-theme;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 0px;
+  font-size: 35px;
+  font-weight: normal;
+  line-height: 130px;
+  vertical-align: middle;
+}
+
+.order-ind {
+  position: absolute;
+  right: 5px;
+  bottom: -10px;
+  text-align: center;
+  color: white;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  background-color: #f56778;
+}
+
+.order-ind-v2 {
+  position: absolute;
+  // right: 5px;
+  bottom: 10px;
+  // text-align: center;
+  color: white;
+  // height: 17px;
+  // width: 17px;
+  // border-radius: 50%;
+  // background-color: #f56778;
+}
+
+.vh-align-container {
+  display: table;
+  height: 100%;
+  width: 100%;
+
+  .vh-align-content {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .login-btn {
+    min-height: 50px;
+    font-size: 1.6rem;
+  }
+}
+
+
+ion-toast.toast-success {
+  .toast-wrapper {
+      background-color: $toast-success;
+      border: 1px solid $toast-success-color-border;
+      border-radius: 4px;
+      margin-top: 5px;
+      width: 95% !important;
+
+      .toast-message {
+          text-align: center;
+          font-size: 1.6rem;
+          color: $toast-success-color-font;
+      }
+  }
+}
+
+ion-toast.toast-error {
+    .toast-wrapper {
+        background-color: $toast-error;
+        border: 1px solid $toast-error-color-border;
+        border-radius: 4px;        
+        margin-top: 5px;
+        width: 95% !important;
+
+        .toast-message {
+            text-align: center;
+            font-size: 1.6rem;
+            color: $toast-error-color-font;
+        }
+    }
+}
+
+ion-toast.toast-warning {
+    .toast-wrapper {
+        background-color: $toast-warning;
+        border: 1px solid $toast-warning-color-font;
+        border-radius: 4px;                
+        margin-top: 5px;
+        width: 95% !important;
+
+        .toast-message {
+            text-align: center;
+            font-size: 1.6rem;
+            color: $toast-warning-color-font;
+        }
+    }
+}
+
+ion-toast.toast-info {
+    .toast-wrapper {
+        background-color: $toast-info-color-border;
+        border: 1px solid $toast-info;
+        border-radius: 4px;                
+        margin-top: 5px;
+        width: 95% !important;
+
+        .toast-message {
+            text-align: center;
+            font-size: 1.6rem;            
+            color: $toast-info-color-font;
+        }
+    }
+}
+

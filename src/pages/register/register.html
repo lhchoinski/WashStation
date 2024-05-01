@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="transparent"></ion-navbar>
+</ion-header>
+
+<ng-progress [color]="'#65cbe4'" [showSpinner]="false"></ng-progress>
+
+<ion-content padding class="background">
+  <div class="vh-align-container">
+    <div class="vh-align-content">
+      <img src="assets/imgs/logo.png" />
+      <form [formGroup]="registerForm" style="margin-top: 0px; margin-bottom: 15px;">
+        <ion-item [class.invalid]="!registerForm.controls.name.valid && regSubmitAttempt">
+          <ion-label>{{ 'REG_NAME_LABEL' | translate }}</ion-label>
+          <ion-input type="text" formControlName="name" (keyup.enter)="register()"></ion-input>
+        </ion-item>
+        <ion-item [class.invalid]="!registerForm.controls.email.valid && regSubmitAttempt">
+          <ion-label>{{ 'REG_EMAIL_LABEL' | translate }}</ion-label>
+          <ion-input type="text" formControlName="email" (keyup.enter)="register()"></ion-input>
+        </ion-item>
+        <ion-item [class.invalid]="!registerForm.controls.password.valid && regSubmitAttempt">
+          <ion-label>{{ 'REG_PASSWORD_LABEL' | translate }}</ion-label>
+          <ion-input type="password" formControlName="password" (keyup.enter)="register()"></ion-input>
+        </ion-item>
+      </form>
+      <div class="table" style="margin-bottom: 30px;">
+        <div class="table-cell">
+          <ion-checkbox [class.invalid]="!termsCondAccepted && regSubmitAttempt" color="primary" [(ngModel)]=termsCondAccepted></ion-checkbox>
+        </div>
+        <div class="table-cell" style="text-align: left;">
+          <ion-label><a (click)="goToTermsConditionPage()" style="margin-left: 10px; text-decoration: underline;">{{ 'ACCEPT_TERMS_CONDITION' | translate }}</a></ion-label>
+        </div>
+      </div>
+      <!-- Buttons section. -->
+      <button class="login-btn btn-border" ion-button block full color="navbar" (click)="register()">{{ 'REG_SUBMIT_BUTTON' | translate | uppercase }}</button>
+      <div class="act-link"><a (click)="activateAccount()" style="text-decoration: underline;">{{ 'ACTIVATE_ACCOUNT' | translate }}</a></div>
+    </div>
+  </div>
+</ion-content>

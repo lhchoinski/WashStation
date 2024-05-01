@@ -1,0 +1,13 @@
+page-select-program {
+	.scroll-content {
+		overflow-y: auto;
+
+		.machine-img {
+			height: 65%;
+		}
+
+		.transparent {
+			background-color: transparent !important;
+		}
+	}
+}

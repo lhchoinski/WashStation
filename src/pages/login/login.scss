@@ -1,0 +1,43 @@
+page-login {
+    .scroll-content {
+        overflow-y: hidden !important;
+
+        ion-spinner {
+            margin-top: 10px;
+            width: 40px;
+            height: 40px;
+        }    
+
+        img {
+            width: 50% !important;
+            margin-bottom: 10px;
+        }
+
+        ion-item,
+        button.item {
+            padding-left: 0px !important;
+        }
+
+        .forgot-pass {
+            margin-top: 20px;
+
+            a {
+                // color: $light-text-blue !important;
+                color: white !important;
+            }
+        }
+
+        #forgot-pass-msg {
+            margin-top: 20px;
+            font-size: 1.6rem;
+            color: $light;
+        }
+
+
+        ion-item.item-input-has-focus.input-has-focus {
+            .item-inner {
+                border-bottom: 1px solid white;
+            }
+        }
+    }
+}

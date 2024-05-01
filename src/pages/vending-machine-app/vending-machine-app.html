@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="dark-navbar">
+    <button class="side-menu-btn" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ laundry.laundries[0].name }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+    </ion-buttons> 	
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="backgnd">
+
+
+
+  <ion-grid no-padding class="menu-container">
+    <ion-row class="row-btn">
+      <ion-col>
+        <button class="menu-btn" ion-button block outline (click)="goToWashingMenu()">
+          <div class="table">
+            <div class="table-row">
+              <div class="table-cell">
+                <img class="btn-img" [src]="wasMachineImg" />
+              </div>
+            </div>
+            <div class="table-row" style="height: 16px;"></div>            
+            <div class="table-row">
+              <div class="table-cell">
+                  <div class="xl-font">{{ 'WASHING' | translate | uppercase }}</div>
+              </div>
+            </div>
+          </div>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row style="height: 16px;"></ion-row>
+    <ion-row  class="row-btn">
+      <ion-col>
+        <button class="menu-btn" ion-button block outline (click)="goToDryingMenu()">
+          <div class="table">
+            <div class="table-row">
+              <div class="table-cell">
+                <img class="btn-img" [src]="dryMachineImg" />
+              </div>
+            </div>
+            <div class="table-row" style="height: 16px;"></div>                        
+            <div class="table-row">
+              <div class="table-cell">
+                  <div class="xl-font">{{ 'DRYING' | translate | uppercase }}</div>
+              </div>
+            </div>
+          </div>
+        </button>
+      </ion-col>      
+    </ion-row>
+  </ion-grid>
+
+
+  
+</ion-content>

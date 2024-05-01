@@ -1,0 +1,23 @@
+page-vending-machine-app {
+    .scroll-content {
+        overflow-y: hidden !important;
+
+        .menu-container {
+            height: 100% !important;
+
+            ion-row.row-btn {
+                height: calc(50% - 8px) !important;
+
+                button {
+                    margin: 0px !important;
+                }
+            }
+        }
+
+        .btn-img {
+            height: 17vh !important;
+            // height: 28% !important;
+            // max-height: 35% !important;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+page-laundry-details {
+    .scroll-content {
+        overflow-y: hidden !important;
+
+        .btn {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            min-height: 70px;
+            height: 70px !important;
+            font-size: 1.6rem;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .container {
+            padding: 10px;
+            text-align: center;
+            height: calc(100% - 70px) !important;
+            background-color: $light-background;
+            border-top: 1px solid $dark-grey-border !important;
+
+            .name {
+                font-size: $md-font-size;
+                color: $light-blue;
+                margin-bottom: 5px;
+            }
+            .addr {
+                margin: 0px;
+                font-size: 1.6rem;
+                color: black;
+            }
+        }
+    }
+}

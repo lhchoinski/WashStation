@@ -1,0 +1,46 @@
+page-terms-conditions {
+    ion-header::after {
+        background-image: none !important;
+    }
+
+    .scroll-content {
+        background-color: $light-background;
+        overflow-y: auto !important;
+        padding-top: 0px !important;
+    }
+
+    .close-icon {
+        font-size: 4rem !important;
+    }
+
+    .title {
+        text-align: center;
+        color: black;
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        // color: #004f6e;
+        color: #00a0e3;
+        font-size: 1.7rem;
+        margin-top: 25px;               
+    }
+
+    .item {
+        color: black;
+        font-size: 1.6rem;
+    }
+
+    .sub-item {
+        padding-left: 10px;
+        color: black;
+        font-size: 1.6rem;
+    }
+
+    #no-terms-found {
+        margin-top: 25px;
+        font-size: $sm-list-font-size;
+        text-align: center;
+        color: #979797;
+    }
+}

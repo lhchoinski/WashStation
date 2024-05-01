@@ -1,0 +1,41 @@
+page-register {
+    ion-header button.back-button {
+        color: white !important;
+    }
+
+    ion-header::after {
+        background-image: none !important;
+    }
+
+    .scroll-content {
+        overflow-y: auto !important;
+        margin-top: 0 !important;
+
+        img {
+            width: 50% !important;
+            margin-bottom: 10px;
+        }
+
+        ion-item {
+            padding-left: 0px !important;
+        }
+
+        .act-link {
+            margin-top: 20px;
+            a {
+                // color: $light-text-blue !important;
+                color: white !important;
+            }
+        }
+
+        a {
+            color: white !important;
+        }
+
+        ion-item.item-input-has-focus.input-has-focus {
+            .item-inner {
+                border-bottom: 1px solid white;
+            }
+        }
+    }
+}

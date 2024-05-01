@@ -1,0 +1,10 @@
+<ion-content style="position: relative;">
+  <div class="table container">
+    <div class="table-cell">
+      <div class="name">{{ laundry.laundries[0].name }}</div>
+      <p class="addr">{{ laundry.addressLine1 }}</p>    
+      <p class="addr no-margin">{{ laundry.postalCode + ', ' + laundry.city }}</p>    
+    </div>
+  </div>
+  <button class="btn" ion-button block full (click)="enterLaundry()">{{ 'ENTER' | translate | uppercase }}</button>
+</ion-content>

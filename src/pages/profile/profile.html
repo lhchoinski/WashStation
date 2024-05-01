@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'PROFILE' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ng-progress [color]="'#65cbe4'" [showSpinner]="false"></ng-progress>
+
+<ion-content padding>
+  <ion-item no-lines class="header-item">
+    <ion-icon name="ios-contact" item-start style="font-size: 4.5rem;"></ion-icon>
+    <h2 class="title">{{ userSession.name }}</h2>
+    <p class="subtitle">{{ userSession.email }}</p>
+  </ion-item>
+
+  <ion-list>
+    <form [formGroup]="userDataForm" style="margin-top: 0px">
+      <ion-item class="input-field" [class.invalid]="!userDataForm.controls.name.valid && userDataSubmitAttempt">
+        <ion-label>{{ 'NAME_NAME_LABEL' | translate }}</ion-label>
+        <ion-input type="text" formControlName="name" (keyup.enter)="submitUserData()"></ion-input>
+      </ion-item>
+      <ion-item class="input-field" [class.invalid]="!userDataForm.controls.nif.valid && userDataSubmitAttempt">
+        <ion-label>{{ 'NIF_NAME_LABEL' | translate }}</ion-label>
+        <ion-input type="number" formControlName="nif" (keyup.enter)="submitUserData()"></ion-input>
+      </ion-item>
+      <ion-item class="input-field" [class.invalid]="!userDataForm.controls.addressLine.valid && userDataSubmitAttempt">
+        <ion-label>{{ 'ADDRESS_LABEL' | translate }}</ion-label>
+        <ion-textarea type="text" formControlName="addressLine" rows="3" (keyup.enter)="submitUserData()"></ion-textarea>
+      </ion-item>
+      <ion-item class="input-field" [class.invalid]="!userDataForm.controls.postalCode.valid && userDataSubmitAttempt">
+        <ion-label>{{ 'POSTAL_CODE_LABEL' | translate }}</ion-label>
+        <ion-input type="text" formControlName="postalCode" (keyup.enter)="submitUserData()"></ion-input>
+      </ion-item>
+      <ion-item class="input-field" [class.invalid]="!userDataForm.controls.city.valid && userDataSubmitAttempt">
+        <ion-label>{{ 'CITY_LABEL' | translate }}</ion-label>
+        <ion-input type="text" formControlName="city" (keyup.enter)="submitUserData()"></ion-input>
+      </ion-item>
+      <ion-item class="input-field" [class.invalid]="!userDataForm.controls.country.valid && userDataSubmitAttempt">
+        <ion-label>{{ 'COUNTRY_LABEL' | translate }}</ion-label>
+        <ion-input type="text" formControlName="country" (keyup.enter)="submitUserData()"></ion-input>
+      </ion-item>
+      <ion-item class="input-field" [class.invalid]="!userDataForm.controls.mobileContact.valid && userDataSubmitAttempt">
+        <ion-label>{{ 'MOBILE_CONTACT_NAME_LABEL' | translate }}</ion-label>
+        <ion-input type="number" formControlName="mobileContact" (keyup.enter)="submitUserData()"></ion-input>
+      </ion-item>
+      <ion-item style="display: none;"></ion-item>
+    </form>
+    <ion-item>
+      <ion-label>{{ 'BIRTHDAY_NAME_LABEL' | translate }}</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="birthday" [cancelText]="translate.instant('CANCEL')" [doneText]="translate.instant('OK')"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'GENDER_NAME_LABEL' | translate }}</ion-label>
+      <ion-select [(ngModel)]="gender">
+        <ion-option value="MALE">{{ 'MALE' | translate }}</ion-option>
+        <ion-option value="FEMALE">{{ 'FEMALE' | translate }}</ion-option>            
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <button class="login-btn" ion-button block full color="navbar" (click)="submitUserData()">{{ 'SAVE' | translate | uppercase }}</button>
+</ion-content>

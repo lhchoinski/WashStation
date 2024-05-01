@@ -1,0 +1,23 @@
+page-settings {
+    .scroll-content {
+        overflow-y: auto !important;
+        background-color: $light-background;
+
+        button,
+        ion-item {
+            padding-left: 0px !important;
+        }
+
+        ion-item {
+            background-color: $light-background !important;
+            
+            .item-inner {
+                border-color: $dark-grey-border !important;
+            }
+        }
+
+        button.item {
+            background-color: $light-background !important;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="light-grey">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon class="close-icon" name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>   	
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="title">{{ 'TERMS_CONDITION_TITLE' | translate }}</div>
+
+  <div *ngIf="washstationInfo.termsObj.length <= 0" style="height: 50%; overflow: auto;">
+    <div id="no-terms-found">{{ 'TERMS_AND_COND_NOT_FOUND' | translate }}</div>
+  </div>
+  <div *ngIf="washstationInfo.termsObj.length > 0">
+    <div *ngFor="let entry of washstationInfo.termsObj">
+      <div class="subtitle">{{ entry.section }}</div>
+      <p *ngFor="let item of entry.content" [ngClass]="{ 'item': item.type === 'item', 'sub-item': item.type === 'sub-item' }">{{ item.value }}</p>
+    </div>
+
+    <img style="width: 70%;margin-top: 10px;margin-bottom: 5px;" src="assets/imgs/payment.png">  
+  </div>
+
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-menu [content]="content" persistent="true">
+  <ion-header>
+    <ion-toolbar color="navbar">
+      <ion-item id="menu-header" no-lines menuClose (click)="selectPage(pages[1])">
+        <ion-icon name="ios-contact" item-start style="font-size: 4.5rem;"></ion-icon>
+        <p>{{ userSession.name }}</p>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button class="menu-item item-arrow" menuClose no-lines ion-item *ngFor="let p of pagesSideMenu" (click)="selectPage(p)">
+        <ion-icon [name]="p.icon" item-start></ion-icon>
+        {{ p.title | translate }}
+      </button>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <button id="logout-btn" class="menu-item" menuClose ion-item (click)="logout()">
+      <ion-icon name="ios-power" item-start></ion-icon>
+      {{ 'LOGOUT' | translate }}
+    </button>
+  </ion-footer>
+</ion-menu>
+
+<ion-nav #content swipeBackEnabled="false"></ion-nav>

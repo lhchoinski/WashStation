@@ -1,0 +1,62 @@
+page-about {
+    .scroll-content {
+        background-color: $light-background;
+        overflow-y: auto !important;
+
+        .about-logo {
+            margin-bottom: 20px;
+        }
+
+        ion-item {
+            background-color: $light-background !important;
+            
+            .item-inner {
+                border-color: $dark-grey-border !important;
+            }
+        }
+
+        button.item {
+            background-color: $light-background !important;
+        }
+
+        img {
+            height: 20%;
+            width: auto;
+        }
+
+        .title {
+            color: $light-blue;            
+            font-size: $md-font-size;
+        }
+
+        .subtitle {
+            color: black;                        
+            font-size: $sm-list-font-size;
+            white-space: normal !important;
+        }
+
+        ion-item,
+        button.item {
+            padding-left: 0px !important;
+        }
+
+        .label {
+            color: $light-blue;
+            font-size: 1.7rem;
+            margin-bottom: 7px;
+        }
+
+        .content {
+            font-size: 1.6rem;            
+        }
+
+        .icon {
+            width: 40px;
+            text-align: center;
+        }
+
+        .separator {
+            height: 5px;
+        }
+    }
+}

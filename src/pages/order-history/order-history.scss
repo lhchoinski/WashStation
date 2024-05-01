@@ -1,0 +1,36 @@
+page-order-history {
+    .scroll-content {
+        overflow-y: auto !important;
+        background-color: $light-background;
+
+        ion-item {
+            background-color: $light-background !important;
+            
+            .item-inner {
+                border-color: $dark-grey-border !important;
+            }
+        }
+
+        ion-item {
+            padding-left: 0px !important;
+
+            h2 {
+                font-size: 1.7rem !important;                
+                margin-top: 0px !important;
+                margin-bottom: 5px;
+            }
+
+            .price {
+                font-size: 1.7rem !important;
+                color: $light-blue !important;
+            }
+        }
+
+        #no-history-found {
+            margin-top: 25px;
+            font-size: $sm-list-font-size;
+            text-align: center;
+            color: #979797;
+        }
+    }
+}

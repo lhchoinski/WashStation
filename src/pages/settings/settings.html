@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'SETTINGS' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>{{ 'LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="userSession.selectedLang"  (ionChange)="langSelected($event)">
+        <ion-option value="en">{{ 'EN' | translate }}</ion-option>
+        <ion-option value="es">{{ 'ES' | translate }}</ion-option>
+        <ion-option value="fr">{{ 'FR' | translate }}</ion-option>
+        <ion-option value="pt">{{ 'PT' | translate }}</ion-option>              
+        <ion-option value="nl">{{ 'NL' | translate }}</ion-option>              
+      </ion-select>
+    </ion-item>
+    <button class="item-arrow" ion-item (click)="changePassword()">
+      <ion-label>{{ 'CHANGE_PASSWORD' | translate }}</ion-label>
+    </button>
+  </ion-list>
+</ion-content>

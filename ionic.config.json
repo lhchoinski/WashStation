@@ -1,0 +1,7 @@
+{
+  "name": "washstation-mob-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

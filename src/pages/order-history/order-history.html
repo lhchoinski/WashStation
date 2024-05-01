@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'ORDERS_HISTORY' | translate }}</ion-title>  
+  </ion-navbar>
+</ion-header>
+
+<ng-progress [color]="'#65cbe4'" [showSpinner]="false"></ng-progress>
+
+<ion-content padding>
+  <div *ngIf="orders.length <= 0 && fetchDone" style="height: 50%; overflow: auto;">
+    <div id="no-history-found">{{ 'NO_HISTORY_FOUND' | translate }}</div>
+  </div>
+
+  <ion-list *ngIf="orders.length > 0 && fetchDone">
+    <ion-item *ngFor="let order of orders">
+      <!-- SERVICES -->
+      <div *ngIf="order.type === 'SPEND_APP'">
+        <h2 *ngIf="order.orderMachinePrograms[0].transaction === 'SPEND' && order.orderMachinePrograms[0].machineProgram && order.orderMachinePrograms[0].machineProgram.machine.type === 'wash'">
+          {{ 'WASH' | translate }} - {{ order.orderMachinePrograms[0].machineProgram.machine.name }}
+        </h2>
+        <h2 *ngIf="order.orderMachinePrograms[0].transaction === 'SPEND' && order.orderMachinePrograms[0].machineProgram && order.orderMachinePrograms[0].machineProgram.machine.type === 'dry'">
+          {{ 'DRY' | translate }} - {{ order.orderMachinePrograms[0].machineProgram.machine.name }}
+        </h2>
+        <p>{{ order.laundry.name }}</p>
+        <p>{{ order.created_at | date: 'dd/MM/yyyy HH:mm' }}</p>
+      </div>            
+      <!-- APP CHARGES -->
+      <div *ngIf="order.type === 'CHARGE_APP' || order.type === 'CHARGE_APP_PAYPAL' || order.type === 'CHARGE_APP_MB' || order.type === 'CHARGE_APP_CC'">
+        <h2>{{ 'RECHARGE' | translate }}</h2>
+        <p>{{ order.created_at | date: 'dd/MM/yyyy HH:mm' }}</p>
+      </div>
+      <span class="price" clear item-end>{{ order.orderMachinePrograms[0].price }} &euro;</span>          
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll *ngIf="!listEnded" (ionInfinite)="doInfiniteScroll($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

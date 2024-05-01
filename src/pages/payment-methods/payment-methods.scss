@@ -1,0 +1,52 @@
+page-payment-methods {
+    .scroll-content {
+        overflow-y: auto !important;
+        background-color: $light-background;
+
+        .title {
+            margin-top: 5px;
+            // margin-bottom: 16px;
+            color: $light-blue;            
+            font-size: $md-font-size;
+            text-align: center;
+        }
+
+        .subtitle {
+            margin-top: 5px;   
+            margin-bottom: 16px;         
+            text-align: center;
+            font-size: 1.4rem;
+            color: #666;
+        }
+
+        button.payment-item {
+            background-color: $light-background !important;
+            
+            .item-inner {
+                border-color: $dark-grey-border !important;
+            }
+        }
+        
+        button.payment-item {
+            padding-left: 0px !important;
+        }
+
+        .payment-item {
+            border-bottom: 1px solid $dark-grey-border !important;
+            
+            .item-inner {
+                height: 60px !important;
+            }
+        }
+
+        ion-thumbnail {
+            min-width: 50px !important;
+            min-height: 30px !important;
+        }
+
+        .payment-type-img {
+            width: auto !important;
+            height: 30px !important;
+        }
+    }
+}

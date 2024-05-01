@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="dark-navbar">
+    <button class="side-menu-btn" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'DRYING' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+    </ion-buttons> 	
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="backgnd">
+  <div class="machine-btn" *ngFor="let dryMachine of dryMachines;" [ngClass]="getStatusClass(dryMachine, 'machine')" (click)="selectProgram(dryMachine)">
+    <div class="table" style="height: 100%;">
+      <!-- Machine index. -->
+      <div class="table-cell centered" style="width: 60px;">
+        <div class="index-font" [ngClass]="getStatusClass(dryMachine, 'index')">{{ dryMachine.index }}</div>
+      </div>
+      <!-- Machine image. -->
+      <div class="table-cell" style="width: 70px;">
+        <img *ngIf="dryMachine.status !== 'NOK'" class="centered-img" [src]="dryMachineStaticImg" style="height: 65px;"/>
+        <img *ngIf="dryMachine.status === 'NOK'" class="centered-img" [src]="dryMachineImg" style="height: 65px;"/>
+      </div>
+      <!-- Machine description. -->
+      <div class="table-cell" style="padding-left: 15px;">
+        <div class="md-font">{{ dryMachine.name | uppercase }}</div>
+        <div class="sm-font">{{ dryMachine.type | translate }}</div>
+        <div class="sm-font">{{ dryMachine.config.capacity }} Kg</div>
+      </div>
+    </div>
+  </div>
+</ion-content>

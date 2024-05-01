@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'ABOUT' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ng-progress [color]="'#65cbe4'" [showSpinner]="false"></ng-progress>
+
+<ion-content padding>
+  <img class="centered-img about-logo" src="assets/imgs/logo-blue.png" style="margin-top: 15px;" />
+  <ion-item no-lines>
+    <h2 class="title">{{ name }}</h2>
+    <p class="subtitle">{{ address }}</p>
+    <p class="subtitle">{{ postalCode }}, {{ city }}</p>
+  </ion-item>
+  <ion-list>
+    <ion-item>
+      <div class="label">{{ 'CONTACTS' | translate }}</div>
+      <div class="table">
+        <div class="table-row">
+          <div class="table-cell icon"><ion-icon name="ios-call-outline"></ion-icon></div>
+          <div class="table-cell">{{ phoneContacts }}</div>
+        </div>
+        <div *ngIf="phoneContactsAlt !== null" class="table-row">
+          <div class="table-cell icon"></div>
+          <div class="table-cell">{{ phoneContactsAlt }}</div>
+        </div>
+        <div class="table-row separator"></div>        
+        <div class="table-row">
+          <div class="table-cell icon"><ion-icon name="ios-at-outline"></ion-icon></div>
+          <div class="table-cell">{{ emailContacts }}</div>
+        </div>
+        <div *ngIf="emailContactsAlt !== null" class="table-row">
+          <div class="table-cell icon"></div>
+          <div class="table-cell">{{ emailContactsAlt }}</div>
+        </div>
+        <div class="table-row separator"></div>        
+        <div class="table-row">
+          <div class="table-cell icon"><ion-icon name="ios-globe-outline"></ion-icon></div>
+          <div class="table-cell">{{ website }}</div>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item class="item-arrow" detail-push (click)="goToTermsConditionPage()">
+      <div class="label">{{ 'TERMS_CONDITION' | translate }}</div>
+    </ion-item>
+    <ion-item>
+      <div class="label">{{ 'APP_VERSION' | translate }}</div>
+      <div class="content">{{ washstationInfo.appVersion }}</div> 
+    </ion-item>
+  </ion-list>
+</ion-content>

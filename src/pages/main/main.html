@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle (click)="menuClicked()">
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>WashStation</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+    </ion-buttons>   	
+  </ion-navbar>
+</ion-header>
+
+<ng-progress [color]="'#65cbe4'" [showSpinner]="false"></ng-progress>
+
+<ion-content style="position: relative;" (click)="closeModal()">
+  <ng-template #searchTemplate let-attrs="attrs">
+    <div class="title">{{ attrs.data.name }}</div>
+    <div class="subtitle">{{ attrs.data.addressLine1 }}, {{ attrs.data.postalCode }}, {{ attrs.data.city }}</div>
+  </ng-template>
+  <ion-auto-complete [dataProvider]="autoComplete" [template]="searchTemplate" [options]="searchPlc" (itemSelected)="laundrySelected($event)" style="top: 10px; width: 95%; left: 2.5%; position: absolute; z-index: 1;"></ion-auto-complete>
+
+  <div id="zoom-container">
+    <button class="zoom-in-btn" (click)="zoomIn()">
+      <ion-icon name="ios-add-outline"></ion-icon>
+    </button>
+    <div class="separator"></div>
+    <button class="zoom-out-btn" (click)="zoomOut()">
+      <ion-icon name="ios-remove-outline"></ion-icon>
+    </button>
+  </div>
+
+  <button id="my-location-btn-search" (click)="goToMyLocation()">
+    <ion-icon name="ios-locate-outline"></ion-icon>
+  </button>
+
+  <!-- Map -->
+  <agm-map id="map-search" [latitude]="mapLat" [longitude]="mapLng" [zoom]="zoom" [zoomControl]="false" [mapDraggable]="mapDraggable" [streetViewControl]="false" [zoomControl]="true" [clickableIcons]="false" (mapReady)="mapReady($event)">
+    <agm-marker *ngIf="hasPosition" [zIndex]="0" [latitude]="lat" [longitude]="lng" [iconUrl]='{"url": "assets/imgs/my-location-icon.png","scaledSize": {"height": 100, "width": 100},"anchor": {"x": 50, "y": 50}}'></agm-marker>
+    <agm-marker *ngFor="let laundry of laundries" [latitude]="laundry.lat" [longitude]="laundry.lng" [iconUrl]='{"url": "assets/imgs/pin-washstation.png","scaledSize": {"height": 50, "width": 50}}' (markerClick)="goToVendingApp(laundry, true)"></agm-marker>
+  </agm-map>
+</ion-content>
+  

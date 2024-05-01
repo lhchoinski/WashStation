@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="dark-navbar">
+    <button class="side-menu-btn" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'WASHING' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+    </ion-buttons> 	
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="backgnd">
+  <div class="machine-btn" *ngFor="let wasMachine of wasMachines;" [ngClass]="getStatusClass(wasMachine, 'machine')" (click)="selectProgram(wasMachine)">
+    <div class="table" style="height: 100%;">
+      <!-- Machine index. -->
+      <div class="table-cell centered" style="width: 60px;">
+        <div class="index-font" [ngClass]="getStatusClass(wasMachine, 'index')">{{ wasMachine.index }}</div>
+      </div>
+      <!-- Machine image. -->
+      <div class="table-cell" style="width: 70px;">
+        <img *ngIf="wasMachine.status !== 'NOK'" class="centered-img" [src]="wasMachineStaticImg" style="height: 65px;"/>
+        <img *ngIf="wasMachine.status === 'NOK'" class="centered-img" [src]="wasMachineImg" style="height: 65px;"/>
+      </div>
+      <!-- Machine description. -->
+      <div class="table-cell" style="padding-left: 15px;">
+        <div class="md-font">{{ wasMachine.name | uppercase }}</div>
+        <div class="sm-font">{{ wasMachine.type | translate }}</div>
+        <div class="sm-font">{{ wasMachine.config.capacity }} Kg</div>
+      </div>
+    </div>
+  </div>
+</ion-content>

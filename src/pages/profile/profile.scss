@@ -1,0 +1,43 @@
+page-profile {
+    .scroll-content {
+        overflow-y: auto !important;
+        background-color: $light-background;
+
+        ion-item {
+            background-color: $light-background !important;
+        }
+
+        ion-item.input-field {
+            .item-inner {
+                border-color: $dark-grey-border;
+            }
+        }
+
+        .header-item .item-inner {
+            margin-left: 5px !important;
+        }
+
+        .login-btn {
+        min-height: 50px;
+        font-size: 1.6rem;
+        }
+
+        ion-list {
+            margin-top: 16px !important;
+            margin-bottom: 16px !important;
+        }
+
+        ion-item,
+        button.item {
+            padding-left: 0px !important;
+        }
+
+        .title {
+            font-size: $md-font-size;
+        }
+
+        .subtitle {
+            font-size: $sm-list-font-size;
+        }
+    }
+}

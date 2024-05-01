@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <button class="side-menu-btn" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'PAYPAL' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p class="subtitle">{{ 'RANGE_CHARGE_VALUE' | translate:params }}</p>
+
+  <div style="margin-top: 0px; margin-bottom: 16px;">
+    <ion-item class="input-field" [class.invalid]="!valueValid && chargeSubmitAttempt">
+      <ion-thumbnail item-start>
+        <img class="paypal-img" src="assets/imgs/paypal.svg" />
+      </ion-thumbnail>
+      <ion-input #valueIn [(ngModel)]="chargeValue" type="number" [placeholder]="valuePlc" (keyup.enter)="makePayment()"></ion-input>
+    </ion-item>
+  </div>
+  <button class="login-btn" ion-button block full color="navbar" (click)="makePayment()">{{ 'CONTINUE' | translate | uppercase }}</button>
+</ion-content>

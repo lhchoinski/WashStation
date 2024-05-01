@@ -1,0 +1,28 @@
+<ng-progress [color]="'#65cbe4'" [showSpinner]="false"></ng-progress>
+
+<ion-content padding no-bounce class="background" style="position: relative;">
+  <div class="vh-align-container">
+    <div class="vh-align-content">
+      <img src="assets/imgs/logo.png" />
+      <div *ngIf="!isAuth">
+        <form [formGroup]="loginForm" style="margin-top: 0px; margin-bottom: 30px;">
+          <ion-item color="white" [class.invalid]="!loginForm.controls.username.valid && loginSubmitAttempt">
+            <ion-label floating>{{ 'LOGIN_EMAIL_LABEL' | translate }}</ion-label>
+            <ion-input formControlName="username" type="text" (keyup.enter)="login()"></ion-input>
+          </ion-item>
+          <ion-item [class.invalid]="!loginForm.controls.password.valid && loginSubmitAttempt">
+            <ion-label floating>{{ 'LOGIN_PASSWORD_LABEL' | translate }}</ion-label>
+            <ion-input formControlName="password" type="password" (keyup.enter)="login()"></ion-input>
+          </ion-item>
+        </form>
+        <!-- Buttons section. -->
+        <button class="login-btn btn-border" ion-button block full color="navbar" (click)="login()">{{ 'LOGIN_SUBMIT_BUTTON' | translate | uppercase }}</button>
+        <button class="btn-no-border" ion-button block full outline color="navbar" (click)="register()" style="border: none;">{{ 'REGISTER_BUTTON' | translate | uppercase }}</button>
+        <div class="forgot-pass"><a (click)="forgotPassword()" style="text-decoration: underline;">{{ 'FORGOT_PASSWORD' | translate }}</a></div>
+      </div>
+      <div *ngIf="isAuth">
+        <ion-spinner name="ios"></ion-spinner>
+      </div>
+    </div>
+  </div>
+</ion-content>

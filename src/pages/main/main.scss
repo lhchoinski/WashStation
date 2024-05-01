@@ -1,0 +1,109 @@
+page-main {
+    ion-auto-complete {
+        ul {
+            max-height: 300px;
+            overflow-y: auto;
+
+            li {
+                padding: 10px !important;
+            }
+
+            .title {
+                font-size: $sm-list-font-size;
+                font-weight: normal;
+                margin-top: 2px; 
+                margin-bottom: 2px; 
+            }
+
+            .subtitle {
+                margin-top: 2px;
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    .scroll-content {
+        padding: 0 !important;
+        overflow-y: hidden;
+
+        agm-map#map-search {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        #zoom-container {
+            z-index: 1;
+            position: absolute;
+            background-color: white;
+            border-radius: 2px;
+            border: 0px;
+            margin: 0px;
+            padding: 0px;
+            width: 40px;
+            bottom: 10px;
+            right: 10px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+            text-align: center;
+
+            .separator {
+                overflow: hidden;
+                width: 30px;
+                height: 1px;
+                background-color: rgb(230, 230, 230);
+                margin-left: 5px;
+            }
+
+            .zoom-in-btn {
+                background-color: white;
+                
+                ion-icon {
+                    color: #666666;
+                    font-size: 30px;
+                    font-weight: bold;
+                }
+            }
+    
+            .zoom-out-btn {
+                background-color: white;    
+    
+                ion-icon {
+                    color: #666666;
+                    font-size: 30px;
+                    font-weight: bold;
+                }
+            }
+
+        }
+
+        #my-location-btn-search {
+            z-index: 1;
+            position: absolute;
+            background-color: white;
+            border-radius: 2px;
+            border: 0px;
+            margin: 0px;
+            padding: 0px;
+            width: 40px;
+            height: 40px;
+            bottom: 85px;
+            right: 10px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+
+            ion-icon {
+                color: #666666;
+                font-size: 30px;
+                font-weight: bold;
+            }
+        }
+
+        .gm-style-cc {
+            display: none !important;
+        }
+
+        ion-auto-complete ul {
+            position: relative !important;
+            width: 100% !important;
+            left: 0px !important;
+        }
+    }
+}

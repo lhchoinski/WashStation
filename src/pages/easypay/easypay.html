@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <button class="side-menu-btn" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ mode | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="mode === 'MB_REF'" padding style="position: relative;">
+  <p class="subtitle">{{ 'RANGE_CHARGE_VALUE' | translate:params }}</p>
+
+  <div style="margin-top: 0px; margin-bottom: 16px;">
+    <ion-item class="input-field" [class.invalid]="!valueValid && chargeSubmitAttempt">
+      <ion-thumbnail item-start>
+        <img class="mb-img" src="assets/imgs/mb-logo-crop.png" />
+      </ion-thumbnail>
+      <ion-input #valueIn [(ngModel)]="chargeValue" type="number" [placeholder]="valuePlc" (keyup.enter)="genMbRef()"></ion-input>
+    </ion-item>
+  </div>
+  <button class="login-btn" ion-button block full color="navbar" (click)="genMbRef()">{{ 'GEN_MB_REF' | translate | uppercase }}</button>
+
+  <div id="ref-container" *ngIf="userSession.paymentRef !== null">
+    <div class="label">{{ 'ACT_MB_REF' | translate }}</div>
+    <div class="mb-img-container">
+      <img class="centered-img" src="assets/imgs/mb-logo.png" />
+    </div>
+    <div class="mb-data-container table">
+      <div class="table-row">
+        <div class="table-cell key">{{ 'ENTITY' | translate }}</div>
+        <div class="table-cell value">{{ userSession.paymentRef.ep_entity }}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell key">{{ 'REF' | translate }}</div>
+        <div class="table-cell value">{{  userSession.paymentRef.ep_reference }}</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell key">{{ 'AMOUNT' | translate }}</div>
+        <div class="table-cell value">{{ userSession.paymentRef.ep_value }} &euro;</div>
+      </div>
+    </div>
+    <div class="limit-payment-date">{{ 'DATE_LIMIT' | translate }}: {{ userSession.paymentRef.ep_date | date: 'dd/MM/yyyy'}}</div>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="mode === 'CREDIT_CARD'" padding>
+  <p class="subtitle">{{ 'RANGE_CHARGE_VALUE' | translate:params }}</p>
+
+  <div style="margin-top: 0px; margin-bottom: 16px;">
+    <ion-item class="input-field" [class.invalid]="!valueValid && chargeSubmitAttempt">
+      <ion-thumbnail item-start>
+        <img class="visa-img" src="assets/imgs/visa-icon-crop.png" />
+      </ion-thumbnail>
+      <ion-input #valueIn [(ngModel)]="chargeValue" type="number" [placeholder]="valuePlc" (keyup.enter)="genGwUrl()"></ion-input>
+    </ion-item>
+  </div>
+  <button class="login-btn" ion-button block full color="navbar" (click)="genGwUrl()">{{ 'CONTINUE' | translate | uppercase }}</button>  
+</ion-content>

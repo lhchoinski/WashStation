@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar color="dark-navbar">
+    <button class="side-menu-btn" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="machineType === 'washing-machine'">{{ 'WASHING' | translate }}</ion-title>
+    <ion-title *ngIf="machineType === 'drying-machine'">{{ 'DRYING' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+    </ion-buttons>   	
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="backgnd" padding>
+  <div class="table" style="height: 100%;">
+    <!-- Content section. -->
+    <div class="table-row">
+      <div class="table-cell">
+        <div [ngSwitch]="machineType">
+          <!-- Washing machine section. -->
+          <div *ngSwitchCase="'washing-machine'">
+            <ion-grid style="padding: 0;">
+              <ion-row>
+                <div class="table">
+                  <div class="table-cell">
+                    <div class="table-no-width" style="margin-bottom: 30px;">
+                      <div class="table-cell">
+                        <img class="machine-img" [src]="img" />    
+                      </div>
+                      <div class="table-cell">
+                        <div style="margin-left: 30px;">
+                          <div class="index-font machine-index-ok centered" style="margin: 0;">{{ machine.index }}</div>
+                          <div class="xl-font" style="margin: 10px 0;">{{ machine.name | uppercase }}</div>
+                          <div class="md-font">{{ priceCard | number: '1.2-2' }} &euro;</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ion-row>
+              <ion-row>
+                <ion-col style="padding: 0;">
+                  <div *ngIf="programs.length === 1">
+                    <div [hidden]="!programs[0].selected" class="table program-btn selection" (click)="selectProgram(programs[0])" style="margin-top: 20px;">
+                      <div class="table-cell centered md-font">
+                        {{ programs[0].program.name }} ({{ programs[0].duration }} {{ 'MIN' | translate }})
+                      </div>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <!-- Drying machine section. -->
+          <div *ngSwitchCase="'drying-machine'">
+            <ion-grid style="padding: 0;">
+              <ion-row>
+                <div class="table">
+                  <div class="table-cell">
+                    <div class="table-no-width">
+                      <div class="table-cell">
+                        <img class="machine-img" [src]="img" />    
+                      </div>
+                      <div class="table-cell">
+                        <div style="margin-left: 30px;">
+                          <div class="index-font machine-index-ok centered" style="margin: 0;">{{ machine.index }}</div>
+                          <div class="xl-font" style="margin: 10px 0;">{{ machine.name | uppercase }}</div>
+                          <div class="md-font">{{ costCard | number: '1.2-2' }} &euro;</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div class="centered md-font" style="margin: 16px 0 10px 0;">{{ 'SELECT_DURATION_MSG' | translate }}
+                  </div>
+                  <div class="table">
+                    <div class="table-cell" style="width: 55px;">
+                      <img class="centered-img" [src]="minusImg" (click)="updateDuration('decrement')" />
+                    </div>
+                    <div class="table-cell" style="width: 15px;"></div>
+                    <div class="table-cell card-balance-box">
+                      <div class="centered md-font black">{{ duration }}  {{ 'MIN' | translate }}</div>
+                    </div>
+                    <div class="table-cell" style="width: 15px;"></div>
+                    <div class="table-cell" style="width: 55px;">
+                      <img class="centered-img" [src]="plusImg" (click)="updateDuration('increment')" />
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer section. -->
+    <div class="table-row">
+      <div class="table-cell" style="height: 1px;">
+        <button class="md-btn transparent" ion-button block outline color="white" (click)="submit()">
+          <div class="xl-font">{{ 'PAY' | translate | uppercase }}</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+  

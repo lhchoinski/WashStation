@@ -1,0 +1,5 @@
+<ion-content id="tabs-content">
+  <ion-tabs #appTabs color="navbar">
+    <ion-tab *ngFor="let page of pages" [root]="page.component"></ion-tab>
+  </ion-tabs>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'RECHARGE' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <span class="navbar-balance">{{ userSession.balance | number : '1.2-2' }} &euro;</span>
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h2 class="title">{{ 'SELECT_PAYMENT_METHOD' | translate }}</h2>
+  <p class="subtitle">{{ 'RANGE_CHARGE_VALUE' | translate:params }}</p>
+  <ion-list>
+    <button class="payment-item item-arrow" ion-item no-lines (click)="goToPaymentForm('PAYPAL')">
+      <ion-thumbnail item-start>
+        <img class="payment-type-img" src="assets/imgs/paypal.svg" />
+      </ion-thumbnail>
+      <ion-label>{{ 'PAYPAL' | translate }}</ion-label>
+    </button>
+    <button class="payment-item item-arrow" ion-item no-lines (click)="goToPaymentForm('MB_REF')">
+      <ion-thumbnail item-start>
+        <img class="payment-type-img" src="assets/imgs/mb-logo-crop.png" />
+      </ion-thumbnail>
+      <ion-label>{{ 'MB_REF' | translate }}</ion-label>
+    </button>
+    <button class="payment-item item-arrow" ion-item no-lines (click)="goToPaymentForm('CREDIT_CARD')">
+      <ion-thumbnail item-start>
+        <img class="payment-type-img" src="assets/imgs/visa-icon-crop.png" />
+      </ion-thumbnail>
+      <ion-label>{{ 'CREDIT_CARD' | translate }}</ion-label>
+    </button>
+  </ion-list>
+</ion-content>
