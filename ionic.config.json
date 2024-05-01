@@ -3,5 +3,10 @@
   "integrations": {
     "cordova": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "hooks": {
+    "build:before": [
+      "npm install"
+    ]
+  }
 }
