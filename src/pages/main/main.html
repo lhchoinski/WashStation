@@ -15,11 +15,11 @@
 <ng-progress [color]="'#65cbe4'" [showSpinner]="false"></ng-progress>
 
 <ion-content style="position: relative;" (click)="closeModal()">
-  <ng-template #searchTemplate let-attrs="attrs">
+  <ng-template  #searchTemplate let-attrs="attrs">
     <div class="title">{{ attrs.data.name }}</div>
     <div class="subtitle">{{ attrs.data.addressLine1 }}, {{ attrs.data.postalCode }}, {{ attrs.data.city }}</div>
   </ng-template>
-  <ion-auto-complete [dataProvider]="autoComplete" [template]="searchTemplate" [options]="searchPlc" (itemSelected)="laundrySelected($event)" style="top: 10px; width: 95%; left: 2.5%; position: absolute; z-index: 1;"></ion-auto-complete>
+  <ion-auto-complete [dataProvider]="autoComplete" [template]="searchTemplate" [options]="searchPlc" (itemSelected)="laundrySelected($event)" style="top: 10px; border-radius: 12px; width: 95%; left: 2.5%; position: absolute; z-index: 1;"></ion-auto-complete>
 
   <div id="zoom-container">
     <button class="zoom-in-btn" (click)="zoomIn()">

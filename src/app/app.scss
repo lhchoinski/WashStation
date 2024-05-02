@@ -59,17 +59,19 @@ $xxl-font-size: 3.5rem;
   border-bottom: 1px solid $dark-grey-border !important;
 
   .item-inner {
-    height: 60px !important;
+    height: 65px !important;
   }
 }
 
 #menu-header {
   background-color: $light-blue !important;
+  
 
     p,
     ion-icon {
       color: white;
       font-size: 1.8rem;
+      
     }
 
     .item-inner {

@@ -6,7 +6,7 @@ import { BackendApiProvider } from '../backend-api/backend-api';
 @Injectable()
 export class WashstationInfoProvider {
 
-  appVersion: string = 'V1.1.0';
+  appVersion: string = 'V1.1.1';
   washStationInfo: any = null;
   minCharge: number = 10;
   maxCharge: number = 100;

@@ -70794,7 +70794,7 @@ ion-auto-complete ul li:hover {
 }
 
 .menu-item .item-inner {
-  height: 60px !important;
+  height: 65px !important;
 }
 
 #menu-header {
@@ -71686,7 +71686,7 @@ page-login .scroll-content ion-item.item-input-has-focus.input-has-focus .item-i
 }
 
 page-main ion-auto-complete ul {
-  max-height: 300px;
+  max-height: 520px;
   overflow-y: auto;
 }
 
@@ -71737,7 +71737,7 @@ page-main .scroll-content #zoom-container {
   z-index: 1;
   position: absolute;
   background-color: white;
-  border-radius: 2px;
+  border-radius: 8px;
   border: 0px;
   margin: 0px;
   padding: 0px;
@@ -71753,7 +71753,7 @@ page-main .scroll-content #zoom-container .separator {
   overflow: hidden;
   width: 30px;
   height: 1px;
-  background-color: #e6e6e6;
+  background-color: #666666;
   margin-left: 5px;
 }
 
@@ -71781,7 +71781,7 @@ page-main .scroll-content #my-location-btn-search {
   z-index: 1;
   position: absolute;
   background-color: white;
-  border-radius: 2px;
+  border-radius: 8px;
   border: 0px;
   margin: 0px;
   padding: 0px;
