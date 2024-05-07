@@ -3,10 +3,5 @@
   "integrations": {
     "cordova": {}
   },
-  "type": "angular",
-  "hooks": {
-    "build:before": [
-      "npm install --legacy-peer-deps"
-    ]
-  }
+  "type": "angular"
 }
