@@ -26,29 +26,29 @@ export class SelectProgramPage  implements OnDestroy {
 	cardImg: string = 'assets/imgs/cartao-icon.png';
 	coinImg: string = 'assets/imgs/moedas-icon.png';
 
-	laundry: any = null;
+	laundry: any = 0;
 
-	minDuration: number = null; // Minimum drying duration [min.]
+	minDuration: number = 0; // Minimum drying duration [min.]
 	maxDuration: number = 120; // Maximum drying duration [min.]
-	duration: number = null;
-	durStep: number = null; 
+	duration: number = 0;
+	durStep: number = 0; 
 
-	machineType: string = null;
-	machine: any = null;
+	machineType: string = "";
+	machine: any = "";
 	programs: Array<any> = [];
-	img: string = null;
+	img: string = "";
 
-	priceCard: string = null;
-	costCard: number = null;
+	priceCard: string = "";
+	costCard: number = 0;
 
 	wasImpulses: number = 1;
 	dryImpulses: number = 1;
 
 	totalCostCard: number = 0.00;
 	btnEnabled: boolean = true;
-	loading: any = null;
+	loading: any = "";
 	middleSubs: Subscription = null;
-	timer: any = null;
+	timer: any = "";
 	feedbackTimeout: number = 15*1000;
 	actReqSent: boolean = false;
 
@@ -354,7 +354,6 @@ export class SelectProgramPage  implements OnDestroy {
 	}
 
 	getOrderRegObj() {
-		let price = null;
 		let obj = {
 			cardId: this.userSession.cardId,
 		  	nif: this.userSession.nif,

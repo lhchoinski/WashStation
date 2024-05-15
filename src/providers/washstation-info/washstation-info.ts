@@ -7,7 +7,7 @@ import { BackendApiProvider } from '../backend-api/backend-api';
 export class WashstationInfoProvider {
 
   appVersion: string = 'V1.1.1';
-  washStationInfo: any = null;
+  washStationInfo: any = "";
   minCharge: number = 10;
   maxCharge: number = 100;
   minDistanceFromLaundry: number = 0.1;  // [Km]

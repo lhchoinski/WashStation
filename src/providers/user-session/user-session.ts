@@ -9,26 +9,26 @@ export class UserSessionProvider {
   storage: any = new Storage({});
   langSubj: Subject<any> = new Subject<any>();
 
-  id: string = null;
-  roleId: string = null;
-  roleIdUser: string = null;
+  id: string = "";
+  roleId: string = "";
+  roleIdUser: string = "";
   balance: number = 0;
   isAuth: boolean = false;
-  cardId: string = null;
-  selectedLang: string = null;
+  cardId: string = "";
+  selectedLang: string = "";
 
-  name: string = null;
-  email: string = null;
-  nif: string = null;
-  mobileContact: string = null;
-  birthday: string = null;
-  gender: string = null;
-  address: any = null;
+  name: string = "";
+  email: string = "";
+  nif: string = "";
+  mobileContact: string = "";
+  birthday: string = "";
+  gender: string = "";
+  address: any = "";
 
-  paymentRef: any = null;
+  paymentRef: any = "";
 
-  lat: number = null;
-  lng: number = null;
+  lat: number = 0;
+  lng: number = 0;
 
   constructor() {
     this.storage.get('userId').then(userId => { if (userId) this.id = userId; });
@@ -56,22 +56,22 @@ export class UserSessionProvider {
 
   logout() {
     this.storage.clear().then(() => {
-      this.name = null;
-      this.id = null;
-      this.roleId = null;
-      this.roleIdUser = null;
+      this.name = "";
+      this.id = "";
+      this.roleId = "";
+      this.roleIdUser = "";
       this.balance = 0;
       this.isAuth = false;
-      this.cardId = null;
-      this.nif = null;
-      this.email = null;
-      this.mobileContact = null;
-      this.birthday = null;
-      this.gender = null;
-      this.address = null;
-      this.lat = null;
-      this.lng = null;
-      this.paymentRef = null;
+      this.cardId = "";
+      this.nif = "";
+      this.email = "";
+      this.mobileContact = "";
+      this.birthday = "";
+      this.gender = "";
+      this.address = "";
+      this.lat = 0;
+      this.lng = 0;
+      this.paymentRef = "";
     });
   }
 

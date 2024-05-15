@@ -57,24 +57,24 @@ var SelectProgramPage = /** @class */ (function () {
         this.minusImg = 'assets/imgs/-.png';
         this.cardImg = 'assets/imgs/cartao-icon.png';
         this.coinImg = 'assets/imgs/moedas-icon.png';
-        this.laundry = null;
-        this.minDuration = null; // Minimum drying duration [min.]
+        this.laundry = 0;
+        this.minDuration = 0; // Minimum drying duration [min.]
         this.maxDuration = 120; // Maximum drying duration [min.]
-        this.duration = null;
-        this.durStep = null;
-        this.machineType = null;
-        this.machine = null;
+        this.duration = 0;
+        this.durStep = 0;
+        this.machineType = "";
+        this.machine = "";
         this.programs = [];
-        this.img = null;
-        this.priceCard = null;
-        this.costCard = null;
+        this.img = "";
+        this.priceCard = "";
+        this.costCard = 0;
         this.wasImpulses = 1;
         this.dryImpulses = 1;
         this.totalCostCard = 0.00;
         this.btnEnabled = true;
-        this.loading = null;
+        this.loading = "";
         this.middleSubs = null;
-        this.timer = null;
+        this.timer = "";
         this.feedbackTimeout = 15 * 1000;
         this.actReqSent = false;
         this.actFeedbackEnabled = true;
@@ -340,7 +340,6 @@ var SelectProgramPage = /** @class */ (function () {
         }
     };
     SelectProgramPage.prototype.getOrderRegObj = function () {
-        var price = null;
         var obj = {
             cardId: this.userSession.cardId,
             nif: this.userSession.nif,
@@ -807,23 +806,23 @@ var UserSessionProvider = /** @class */ (function () {
         var _this = this;
         this.storage = new __WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */]({});
         this.langSubj = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Subject"]();
-        this.id = null;
-        this.roleId = null;
-        this.roleIdUser = null;
+        this.id = "";
+        this.roleId = "";
+        this.roleIdUser = "";
         this.balance = 0;
         this.isAuth = false;
-        this.cardId = null;
-        this.selectedLang = null;
-        this.name = null;
-        this.email = null;
-        this.nif = null;
-        this.mobileContact = null;
-        this.birthday = null;
-        this.gender = null;
-        this.address = null;
-        this.paymentRef = null;
-        this.lat = null;
-        this.lng = null;
+        this.cardId = "";
+        this.selectedLang = "";
+        this.name = "";
+        this.email = "";
+        this.nif = "";
+        this.mobileContact = "";
+        this.birthday = "";
+        this.gender = "";
+        this.address = "";
+        this.paymentRef = "";
+        this.lat = 0;
+        this.lng = 0;
         this.storage.get('userId').then(function (userId) { if (userId)
             _this.id = userId; });
         this.storage.get('name').then(function (name) { if (name)
@@ -847,22 +846,22 @@ var UserSessionProvider = /** @class */ (function () {
     UserSessionProvider.prototype.logout = function () {
         var _this = this;
         this.storage.clear().then(function () {
-            _this.name = null;
-            _this.id = null;
-            _this.roleId = null;
-            _this.roleIdUser = null;
+            _this.name = "";
+            _this.id = "";
+            _this.roleId = "";
+            _this.roleIdUser = "";
             _this.balance = 0;
             _this.isAuth = false;
-            _this.cardId = null;
-            _this.nif = null;
-            _this.email = null;
-            _this.mobileContact = null;
-            _this.birthday = null;
-            _this.gender = null;
-            _this.address = null;
-            _this.lat = null;
-            _this.lng = null;
-            _this.paymentRef = null;
+            _this.cardId = "";
+            _this.nif = "";
+            _this.email = "";
+            _this.mobileContact = "";
+            _this.birthday = "";
+            _this.gender = "";
+            _this.address = "";
+            _this.lat = 0;
+            _this.lng = 0;
+            _this.paymentRef = "";
         });
     };
     UserSessionProvider.prototype.isUserProfileComplete = function () {
@@ -3288,7 +3287,7 @@ var AppModule = /** @class */ (function () {
                 }),
                 __WEBPACK_IMPORTED_MODULE_10__agm_core__["a" /* AgmCoreModule */].forRoot({
                     // apiKey: 'AIzaSyCgl8n3Mv-cOQaUVD3ljtF_yoTTQ1unatc',
-                    apiKey: 'AIzaSyCPBR5XnQauPTQKRvUx1lHVjQ2egQTcWiI',
+                    apiKey: 'AIzaSyD49NOJy5vtGdXT3FtSIYkLOysLR6JIL8c',
                 }),
                 __WEBPACK_IMPORTED_MODULE_11_ngx_progressbar__["b" /* NgProgressModule */],
                 __WEBPACK_IMPORTED_MODULE_12_ionic2_auto_complete__["a" /* AutoCompleteModule */],
@@ -3367,7 +3366,7 @@ var WashstationInfoProvider = /** @class */ (function () {
     function WashstationInfoProvider(backendApi) {
         this.backendApi = backendApi;
         this.appVersion = 'V1.1.1';
-        this.washStationInfo = null;
+        this.washStationInfo = "";
         this.minCharge = 10;
         this.maxCharge = 100;
         this.minDistanceFromLaundry = 0.1; // [Km]
