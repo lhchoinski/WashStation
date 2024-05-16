@@ -3287,7 +3287,7 @@ var AppModule = /** @class */ (function () {
                 }),
                 __WEBPACK_IMPORTED_MODULE_10__agm_core__["a" /* AgmCoreModule */].forRoot({
                     // apiKey: 'AIzaSyCgl8n3Mv-cOQaUVD3ljtF_yoTTQ1unatc',
-                    apiKey: 'AIzaSyD49NOJy5vtGdXT3FtSIYkLOysLR6JIL8c',
+                    apiKey: 'AIzaSyAoBIsSFoO6Mk9NAONV6ntqBBfrO9MxRvw',
                 }),
                 __WEBPACK_IMPORTED_MODULE_11_ngx_progressbar__["b" /* NgProgressModule */],
                 __WEBPACK_IMPORTED_MODULE_12_ionic2_auto_complete__["a" /* AutoCompleteModule */],

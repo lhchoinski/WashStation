@@ -104,7 +104,7 @@ export function getAuthHttp(http) {
     }),
     AgmCoreModule.forRoot({
       // apiKey: 'AIzaSyCgl8n3Mv-cOQaUVD3ljtF_yoTTQ1unatc',
-      apiKey: 'AIzaSyD49NOJy5vtGdXT3FtSIYkLOysLR6JIL8c',
+      apiKey: 'AIzaSyAoBIsSFoO6Mk9NAONV6ntqBBfrO9MxRvw',
     }),
     NgProgressModule,
     AutoCompleteModule,
