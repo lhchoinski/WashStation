@@ -14,10 +14,10 @@ import { WashstationInfoProvider } from '../../providers/washstation-info/washst
 
 
 @Component({
-  selector: 'page-select-program',
-  templateUrl: 'select-program.html',
+	selector: 'page-select-program',
+	templateUrl: 'select-program.html',
 })
-export class SelectProgramPage  implements OnDestroy {
+export class SelectProgramPage implements OnDestroy {
 
 	workflowTimeout: number = 1500;
 
@@ -31,7 +31,7 @@ export class SelectProgramPage  implements OnDestroy {
 	minDuration: number = 0; // Minimum drying duration [min.]
 	maxDuration: number = 120; // Maximum drying duration [min.]
 	duration: number = 0;
-	durStep: number = 0; 
+	durStep: number = 0;
 
 	machineType: string = "";
 	machine: any = "";
@@ -49,24 +49,24 @@ export class SelectProgramPage  implements OnDestroy {
 	loading: any = "";
 	middleSubs: Subscription = null;
 	timer: any = "";
-	feedbackTimeout: number = 15*1000;
+	feedbackTimeout: number = 15 * 1000;
 	actReqSent: boolean = false;
 
 	actFeedbackEnabled: boolean = true;
 
 	constructor(private navParams: NavParams,
-				private middlewareCloud: MiddlewareCloudProvider,
-				private backendApi: BackendApiProvider,
-				private loadingCtrl: LoadingController,
-				private utils: UtilsProvider,
-				private orders: OrdersProvider,
-				private userSession: UserSessionProvider,
-				private translate: TranslateService,
-				private alertCtrl: AlertController,
-				private machines: MachinesProvider,
-				private diagnostic: Diagnostic,
-				private wsInfo: WashstationInfoProvider,
-    			private navCtrl: NavController) {
+		private middlewareCloud: MiddlewareCloudProvider,
+		private backendApi: BackendApiProvider,
+		private loadingCtrl: LoadingController,
+		private utils: UtilsProvider,
+		private orders: OrdersProvider,
+		private userSession: UserSessionProvider,
+		private translate: TranslateService,
+		private alertCtrl: AlertController,
+		private machines: MachinesProvider,
+		private diagnostic: Diagnostic,
+		private wsInfo: WashstationInfoProvider,
+		private navCtrl: NavController) {
 		this.laundry = this.navParams.data.laundry;
 		this.machineType = this.navParams.data.type;
 		this.machine = this.navParams.data.machine;
@@ -115,83 +115,75 @@ export class SelectProgramPage  implements OnDestroy {
 	}
 
 	submit() {
-		this.diagnostic.isLocationAvailable().then((res) => {
-			if (!res) {
-				this.utils.presentToast('LOCATION_IS_DISABLED', 'toast-error');
-				return;			
-			}
 
-			if (this.utils.getDistanceFromLatLonInKm(this.laundry.lat, this.laundry.lng, this.userSession.lat, this.userSession.lng) > this.wsInfo.minDistanceFromLaundry) {
-				this.utils.presentToast('TOO_FAR_AWAY_MSG', 'toast-error', { value: this.wsInfo.minDistanceFromLaundry*1000 });
-				return;
-			}
-	
-			let program = null;
-			let order = null;
-			let pkg = null;  		
+		if (this.utils.getDistanceFromLatLonInKm(this.laundry.lat, this.laundry.lng, this.userSession.lat, this.userSession.lng) > this.wsInfo.minDistanceFromLaundry) {
+			this.utils.presentToast('TOO_FAR_AWAY_MSG', 'toast-error', { value: this.wsInfo.minDistanceFromLaundry * 1000 });
+			return;
+		}
+		
+		let program = null;
+		let order = null;
+		let pkg = null;
 
-			switch (this.machineType) {
-				case 'washing-machine':
-					program = this.programs.find(program => (program.selected));
-					program.selPriceCard = program.priceCard;
-					program.impulses = this.wasImpulses.toString();
-	
-					program.impulses = Math.floor(program.program.duration / this.machine.config.durPerImp);
-					order = {
+		switch (this.machineType) {
+			case 'washing-machine':
+				program = this.programs.find(program => (program.selected));
+				program.selPriceCard = program.priceCard;
+				program.impulses = this.wasImpulses.toString();
+
+				program.impulses = Math.floor(program.program.duration / this.machine.config.durPerImp);
+				order = {
 					machine: this.machine,
 					program: program,
-					}
-	
-					this.orders.reset();
-					this.orders.add(order);
-	
-					pkg = {
+				}
+
+				this.orders.reset();
+				this.orders.add(order);
+
+				pkg = {
 					op: 'machine-reserved',
 					data: {
 						id: this.machine.config.intId,
 						chn: this.machine.peripheral_has_machines[0].channel,
 						progDur: program.program.duration + 1,  // [.min]
 					},
-					};
-					this.machines.updateMachineState(pkg);
+				};
+				this.machines.updateMachineState(pkg);
 				break;
-				case 'drying-machine':
-					program = this.programs[0];
-					program.selPriceCard = this.costCard.toFixed(2);
-					program.program.selDuration = `- ${this.duration} min.`;
-					program.totalDuration = this.duration;
-					program.impulses = this.dryImpulses.toString();
-	
-					program.impulses = Math.floor(program.totalDuration / this.machine.config.durPerImp);
-					order = {
-						machine: this.machine,
-						program: program,
-					}
-	
-					this.orders.reset();
-					this.orders.add(order);
-	
-					pkg = {
-						op: 'machine-reserved',
-						data: {
-							id: this.machine.config.intId,
-							chn: this.machine.peripheral_has_machines[0].channel,
-							progDur: program.totalDuration + 1,  // [.min]
-						},
-					};
-					this.machines.updateMachineState(pkg);
+			case 'drying-machine':
+				program = this.programs[0];
+				program.selPriceCard = this.costCard.toFixed(2);
+				program.program.selDuration = `- ${this.duration} min.`;
+				program.totalDuration = this.duration;
+				program.impulses = this.dryImpulses.toString();
+
+				program.impulses = Math.floor(program.totalDuration / this.machine.config.durPerImp);
+				order = {
+					machine: this.machine,
+					program: program,
+				}
+
+				this.orders.reset();
+				this.orders.add(order);
+
+				pkg = {
+					op: 'machine-reserved',
+					data: {
+						id: this.machine.config.intId,
+						chn: this.machine.peripheral_has_machines[0].channel,
+						progDur: program.totalDuration + 1,  // [.min]
+					},
+				};
+				this.machines.updateMachineState(pkg);
 				break;
-			}
-			this.setTotal();
-	
-			if (!this.actFeedbackEnabled) {
-				this.completeOrder();
-			} else {
-				this.completeOrderWithFeedback();
-			}
-		}).catch((err) => {
-			this.utils.presentToast('LOCATION_IS_DISABLED', 'toast-error');
-		});
+		}
+		this.setTotal();
+
+		if (!this.actFeedbackEnabled) {
+			this.completeOrder();
+		} else {
+			this.completeOrderWithFeedback();
+		}
 	}
 
 	updateDuration(action) {
@@ -200,18 +192,18 @@ export class SelectProgramPage  implements OnDestroy {
 				this.duration += this.durStep;
 				this.dryImpulses++;
 				if (this.duration > this.maxDuration) {
-				this.duration -= this.durStep;
-				this.dryImpulses--;
+					this.duration -= this.durStep;
+					this.dryImpulses--;
 				}
 				break;
 			case 'decrement':
 				if (this.duration > this.minDuration) {
-				this.duration -= this.durStep;
-				this.dryImpulses--;
+					this.duration -= this.durStep;
+					this.dryImpulses--;
 				}
 				break;
 		}
-		this.costCard = (this.duration/this.durStep) * Number(this.priceCard);
+		this.costCard = (this.duration / this.durStep) * Number(this.priceCard);
 	}
 
 	selectProgram(program) {
@@ -228,14 +220,14 @@ export class SelectProgramPage  implements OnDestroy {
 			.reduce((prevVal, el) => prevVal + Number(el), 0.00);
 	}
 
-    cancelOrders() {
-        let pkg = {
-        	op: 'cancel-orders'
-        };
+	cancelOrders() {
+		let pkg = {
+			op: 'cancel-orders'
+		};
 		this.machines.updateMachineState(pkg);
 		setTimeout(() => { this.orders.reset(); }, 1000);
-        this.close();
-  	}
+		this.close();
+	}
 
 	completeOrderWithFeedback() {
 		if (!this.btnEnabled) return;
@@ -245,52 +237,52 @@ export class SelectProgramPage  implements OnDestroy {
 
 			let alert = this.alertCtrl.create({
 				title: this.translate.instant('MAKE_PAYMENT_CONF_MSG'),
-				message: (this.machineType === 'washing-machine') ? this.programs[0].program.name +  ' (' + this.programs[0].duration + ' ' + this.translate.instant('MIN') + ')<div>' + this.totalCostCard.toFixed(2) + '&euro;</div>' : this.programs[0].program.name +  ' (' + this.duration + ' ' + this.translate.instant('MIN') + ')<div>' + this.totalCostCard.toFixed(2) + '&euro;</div>',
+				message: (this.machineType === 'washing-machine') ? this.programs[0].program.name + ' (' + this.programs[0].duration + ' ' + this.translate.instant('MIN') + ')<div>' + this.totalCostCard.toFixed(2) + '&euro;</div>' : this.programs[0].program.name + ' (' + this.duration + ' ' + this.translate.instant('MIN') + ')<div>' + this.totalCostCard.toFixed(2) + '&euro;</div>',
 				cssClass: 'custom-alert',
 				buttons: [
-				  {
-					text: this.translate.instant('NO'),
-					role: 'cancel',
-					cssClass: 'cancel-btn',
-					handler: () => { this.btnEnabled = true; }
-				  },
-				  {
-					text: this.translate.instant('YES'),
-					cssClass: 'ok-btn',					
-					handler: () => {
-						this.sendActivationRequest();
+					{
+						text: this.translate.instant('NO'),
+						role: 'cancel',
+						cssClass: 'cancel-btn',
+						handler: () => { this.btnEnabled = true; }
+					},
+					{
+						text: this.translate.instant('YES'),
+						cssClass: 'ok-btn',
+						handler: () => {
+							this.sendActivationRequest();
 
-						this.loading = this.loadingCtrl.create({
-							content: this.translate.instant('BUY_WAITING_MSG'),
-						});
-						this.loading.onDidDismiss((res) => {
-							if (res) {
-								let toast = this.utils.presentToast('ORDER_COMPLETE', 'toast-success', null, false, this.workflowTimeout);
+							this.loading = this.loadingCtrl.create({
+								content: this.translate.instant('BUY_WAITING_MSG'),
+							});
+							this.loading.onDidDismiss((res) => {
+								if (res) {
+									let toast = this.utils.presentToast('ORDER_COMPLETE', 'toast-success', null, false, this.workflowTimeout);
 
-								toast.onDidDismiss(() => {
+									toast.onDidDismiss(() => {
+										this.btnEnabled = true;
+
+										this.userSession.balance = (this.userSession.balance - this.totalCostCard < 0) ? 0 : this.userSession.balance - this.totalCostCard;
+										this.orders.reset();
+
+										this.close();
+									});
+								} else {
 									this.btnEnabled = true;
-					
-									this.userSession.balance = (this.userSession.balance - this.totalCostCard < 0) ? 0 : this.userSession.balance - this.totalCostCard;
-									this.orders.reset();
-
-									this.close();
-								});
-							} else {
-								this.btnEnabled = true;								
-								this.utils.presentToast('CHECK_INTERNET_CONNECTION', 'toast-error');
-							}
-							this.actReqSent = false;							
-						});
-						this.loading.present();
-						this.timer = setTimeout(() => { if (this.loading) this.loading.dismiss(false); }, this.feedbackTimeout);
+									this.utils.presentToast('CHECK_INTERNET_CONNECTION', 'toast-error');
+								}
+								this.actReqSent = false;
+							});
+							this.loading.present();
+							this.timer = setTimeout(() => { if (this.loading) this.loading.dismiss(false); }, this.feedbackTimeout);
+						}
 					}
-				  }
 				]
-			  });
-			  alert.present();
+			});
+			alert.present();
 		} else {
 			this.utils.presentToast('NOT_ENOUGH_BALANCE', 'toast-error');
-		}		
+		}
 	}
 
 	completeOrder() {
@@ -301,53 +293,53 @@ export class SelectProgramPage  implements OnDestroy {
 
 			let alert = this.alertCtrl.create({
 				title: this.translate.instant('MAKE_PAYMENT_CONF_MSG'),
-				message: (this.machineType === 'washing-machine') ? this.programs[0].program.name +  ' (' + this.programs[0].duration + ' ' + this.translate.instant('MIN') + ')<div>' + this.totalCostCard.toFixed(2) + '&euro;</div>' : this.programs[0].program.name +  ' (' + this.duration + ' ' + this.translate.instant('MIN') + ')<div>' + this.totalCostCard.toFixed(2) + '&euro;</div>',			
-				cssClass: 'custom-alert',							
+				message: (this.machineType === 'washing-machine') ? this.programs[0].program.name + ' (' + this.programs[0].duration + ' ' + this.translate.instant('MIN') + ')<div>' + this.totalCostCard.toFixed(2) + '&euro;</div>' : this.programs[0].program.name + ' (' + this.duration + ' ' + this.translate.instant('MIN') + ')<div>' + this.totalCostCard.toFixed(2) + '&euro;</div>',
+				cssClass: 'custom-alert',
 				buttons: [
-				  {
-					text: this.translate.instant('NO'),
-					role: 'cancel',
-					cssClass: 'cancel-btn',					
-					handler: () => { this.btnEnabled = true; }
-				  },
-				  {
-					text: this.translate.instant('YES'),
-					cssClass: 'ok-btn',					
-					handler: () => {
-						this.loading = this.loadingCtrl.create({
-							content: this.translate.instant('BUY_WAITING_MSG'),
-						});
-						this.loading.onDidDismiss((res) => {
-							if (res) {
-								this.sendActivationRequest();
+					{
+						text: this.translate.instant('NO'),
+						role: 'cancel',
+						cssClass: 'cancel-btn',
+						handler: () => { this.btnEnabled = true; }
+					},
+					{
+						text: this.translate.instant('YES'),
+						cssClass: 'ok-btn',
+						handler: () => {
+							this.loading = this.loadingCtrl.create({
+								content: this.translate.instant('BUY_WAITING_MSG'),
+							});
+							this.loading.onDidDismiss((res) => {
+								if (res) {
+									this.sendActivationRequest();
 
-								let toast = this.utils.presentToast('ORDER_COMPLETE', 'toast-success', null, false, this.workflowTimeout);
+									let toast = this.utils.presentToast('ORDER_COMPLETE', 'toast-success', null, false, this.workflowTimeout);
 
-								toast.onDidDismiss(() => {
+									toast.onDidDismiss(() => {
+										this.btnEnabled = true;
+
+										this.userSession.balance = (this.userSession.balance - this.totalCostCard < 0) ? 0 : this.userSession.balance - this.totalCostCard;
+										this.orders.reset();
+
+										this.close();
+									});
+								} else {
 									this.btnEnabled = true;
+									this.utils.presentToast('CHECK_INTERNET_CONNECTION', 'toast-error');
+								}
+								this.actReqSent = false;
+							});
+							this.loading.present();
 
-									this.userSession.balance = (this.userSession.balance - this.totalCostCard < 0) ? 0 : this.userSession.balance - this.totalCostCard;
-									this.orders.reset();
-
-									this.close();									
-								});
-							} else {
-								this.btnEnabled = true;								
-								this.utils.presentToast('CHECK_INTERNET_CONNECTION', 'toast-error');
-							}
-							this.actReqSent = false;
-						});
-						this.loading.present();
-
-						this.backendApi.setOrders(this.getOrderRegObj()).subscribe(
-							res => setTimeout(() => { if (this.loading) this.loading.dismiss(true); }, this.workflowTimeout),
-							err => setTimeout(() => { if (this.loading) this.loading.dismiss(false); }, this.workflowTimeout),
-						);
+							this.backendApi.setOrders(this.getOrderRegObj()).subscribe(
+								res => setTimeout(() => { if (this.loading) this.loading.dismiss(true); }, this.workflowTimeout),
+								err => setTimeout(() => { if (this.loading) this.loading.dismiss(false); }, this.workflowTimeout),
+							);
+						}
 					}
-				  }
 				]
-			  });
-			  alert.present();
+			});
+			alert.present();
 		} else {
 			this.utils.presentToast('NOT_ENOUGH_BALANCE', 'toast-error');
 		}
@@ -356,36 +348,36 @@ export class SelectProgramPage  implements OnDestroy {
 	getOrderRegObj() {
 		let obj = {
 			cardId: this.userSession.cardId,
-		  	nif: this.userSession.nif,
-		  	expense: true,
-		  	priceTotal: this.totalCostCard,
-		  	laundryId: this.navParams.data.laundryId,
-		  	orders: [],
+			nif: this.userSession.nif,
+			expense: true,
+			priceTotal: this.totalCostCard,
+			laundryId: this.navParams.data.laundryId,
+			orders: [],
 		};
 		this.orders.orders.forEach(item => {
-		  obj.orders.push({
-			price: Number(item.program.selPriceCard),
-			machineProgramId: item.program.machineProgramId,
-			impulses: (item.program.impulses) ? item.program.impulses : 1,
-		  });
+			obj.orders.push({
+				price: Number(item.program.selPriceCard),
+				machineProgramId: item.program.machineProgramId,
+				impulses: (item.program.impulses) ? item.program.impulses : 1,
+			});
 		});
 		return obj;
 	}
-	
+
 	sendActivationRequest() {
 		let actMsg = [];
 		this.orders.get().forEach((item, i) => {
-		let act = {
-			id: item.machine.config.intId,
-			chn: item.machine.peripheral_has_machines[0].channel,
-			impulses: (item.program.impulses) ? item.program.impulses.toString() : '1',
-		};
-		actMsg.push(act);
+			let act = {
+				id: item.machine.config.intId,
+				chn: item.machine.peripheral_has_machines[0].channel,
+				impulses: (item.program.impulses) ? item.program.impulses.toString() : '1',
+			};
+			actMsg.push(act);
 		});
 
 		let pkg = {
-		  op: 'activate-machine',
-		  data: actMsg,
+			op: 'activate-machine',
+			data: actMsg,
 		};
 		this.actReqSent = true;
 		this.middlewareCloud.send(pkg);

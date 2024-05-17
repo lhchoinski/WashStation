@@ -120,75 +120,66 @@ var SelectProgramPage = /** @class */ (function () {
         this.navCtrl.pop();
     };
     SelectProgramPage.prototype.submit = function () {
-        var _this = this;
-        this.diagnostic.isLocationAvailable().then(function (res) {
-            if (!res) {
-                _this.utils.presentToast('LOCATION_IS_DISABLED', 'toast-error');
-                return;
-            }
-            if (_this.utils.getDistanceFromLatLonInKm(_this.laundry.lat, _this.laundry.lng, _this.userSession.lat, _this.userSession.lng) > _this.wsInfo.minDistanceFromLaundry) {
-                _this.utils.presentToast('TOO_FAR_AWAY_MSG', 'toast-error', { value: _this.wsInfo.minDistanceFromLaundry * 1000 });
-                return;
-            }
-            var program = null;
-            var order = null;
-            var pkg = null;
-            switch (_this.machineType) {
-                case 'washing-machine':
-                    program = _this.programs.find(function (program) { return (program.selected); });
-                    program.selPriceCard = program.priceCard;
-                    program.impulses = _this.wasImpulses.toString();
-                    program.impulses = Math.floor(program.program.duration / _this.machine.config.durPerImp);
-                    order = {
-                        machine: _this.machine,
-                        program: program,
-                    };
-                    _this.orders.reset();
-                    _this.orders.add(order);
-                    pkg = {
-                        op: 'machine-reserved',
-                        data: {
-                            id: _this.machine.config.intId,
-                            chn: _this.machine.peripheral_has_machines[0].channel,
-                            progDur: program.program.duration + 1,
-                        },
-                    };
-                    _this.machines.updateMachineState(pkg);
-                    break;
-                case 'drying-machine':
-                    program = _this.programs[0];
-                    program.selPriceCard = _this.costCard.toFixed(2);
-                    program.program.selDuration = "- " + _this.duration + " min.";
-                    program.totalDuration = _this.duration;
-                    program.impulses = _this.dryImpulses.toString();
-                    program.impulses = Math.floor(program.totalDuration / _this.machine.config.durPerImp);
-                    order = {
-                        machine: _this.machine,
-                        program: program,
-                    };
-                    _this.orders.reset();
-                    _this.orders.add(order);
-                    pkg = {
-                        op: 'machine-reserved',
-                        data: {
-                            id: _this.machine.config.intId,
-                            chn: _this.machine.peripheral_has_machines[0].channel,
-                            progDur: program.totalDuration + 1,
-                        },
-                    };
-                    _this.machines.updateMachineState(pkg);
-                    break;
-            }
-            _this.setTotal();
-            if (!_this.actFeedbackEnabled) {
-                _this.completeOrder();
-            }
-            else {
-                _this.completeOrderWithFeedback();
-            }
-        }).catch(function (err) {
-            _this.utils.presentToast('LOCATION_IS_DISABLED', 'toast-error');
-        });
+        if (this.utils.getDistanceFromLatLonInKm(this.laundry.lat, this.laundry.lng, this.userSession.lat, this.userSession.lng) > this.wsInfo.minDistanceFromLaundry) {
+            this.utils.presentToast('TOO_FAR_AWAY_MSG', 'toast-error', { value: this.wsInfo.minDistanceFromLaundry * 1000 });
+            return;
+        }
+        var program = null;
+        var order = null;
+        var pkg = null;
+        switch (this.machineType) {
+            case 'washing-machine':
+                program = this.programs.find(function (program) { return (program.selected); });
+                program.selPriceCard = program.priceCard;
+                program.impulses = this.wasImpulses.toString();
+                program.impulses = Math.floor(program.program.duration / this.machine.config.durPerImp);
+                order = {
+                    machine: this.machine,
+                    program: program,
+                };
+                this.orders.reset();
+                this.orders.add(order);
+                pkg = {
+                    op: 'machine-reserved',
+                    data: {
+                        id: this.machine.config.intId,
+                        chn: this.machine.peripheral_has_machines[0].channel,
+                        progDur: program.program.duration + 1,
+                    },
+                };
+                this.machines.updateMachineState(pkg);
+                break;
+            case 'drying-machine':
+                program = this.programs[0];
+                program.selPriceCard = this.costCard.toFixed(2);
+                program.program.selDuration = "- " + this.duration + " min.";
+                program.totalDuration = this.duration;
+                program.impulses = this.dryImpulses.toString();
+                program.impulses = Math.floor(program.totalDuration / this.machine.config.durPerImp);
+                order = {
+                    machine: this.machine,
+                    program: program,
+                };
+                this.orders.reset();
+                this.orders.add(order);
+                pkg = {
+                    op: 'machine-reserved',
+                    data: {
+                        id: this.machine.config.intId,
+                        chn: this.machine.peripheral_has_machines[0].channel,
+                        progDur: program.totalDuration + 1,
+                    },
+                };
+                this.machines.updateMachineState(pkg);
+                break;
+        }
+        this.setTotal();
+        if (!this.actFeedbackEnabled) {
+            this.completeOrder();
+        }
+        else {
+            this.completeOrderWithFeedback();
+        }
     };
     SelectProgramPage.prototype.updateDuration = function (action) {
         switch (action) {
