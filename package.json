@@ -26,6 +26,7 @@
     "@capacitor/cli": "^6.0.0",
     "@capacitor/core": "^6.0.0",
     "@capacitor/geolocation": "^6.0.0",
+    "@capacitor/ios": "^6.0.0",
     "@ionic-native/core": "4.9.1",
     "@ionic-native/diagnostic": "^4.10.1",
     "@ionic-native/geolocation": "^4.9.1",
