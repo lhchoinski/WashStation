@@ -126,7 +126,7 @@
   "MIN_CHARGE_VALUE": "Valor mínimo de carga de {{ value }}€.",  
   "RANGE_CHARGE_VALUE": "Valor mínimo de carga entre {{ min }}€ y {{ max }}€.",   
   "MAKE_PAYMENT_CONF_MSG": "Confimación de pago?",
-  "TOO_FAR_AWAY_MSG": "Necesita estar en el interior da lavandería para realizar la compra.",
+  "TOO_FAR_AWAY_MSG": "Es necesario estar dentro del lavadero o habilitar ubicación para realizar la compra.",
   "LOCATION_IS_DISABLED": "Es necesario dar acceso a su localización para efectuar la compra.",
   "SELECT_PAYMENT_METHOD": "Seleccione un método de carga", 
   "PAYPAL": "Paypal",

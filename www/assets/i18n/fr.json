@@ -120,7 +120,7 @@
   "MIN_CHARGE_VALUE": "Valeur de charge minimale de {{ value }} €.",
   "RANGE_CHARGE_VALUE": "Valeur de charge entre {{ min }} € et {{ max }} €.",  
   "MAKE_PAYMENT_CONF_MSG": "Confirmer le paiement?",
-  "TOO_FAR_AWAY_MSG": "Vous devez être à l'intérieur de la buanderie pour effectuer l'achat.",
+  "TOO_FAR_AWAY_MSG": "Vous devez être à l'intérieur de la buanderie ou activer l'emplacement pour effectuer l'achat.",
   "LOCATION_IS_DISABLED": "Vous devez donner accès à votre localisation pour effectuer l'achat.",
   "SELECT_PAYMENT_METHOD": "Sélectionnez une méthode de rechargement", 
   "PAYPAL": "Paypal",

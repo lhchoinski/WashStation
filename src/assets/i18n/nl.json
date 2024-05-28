@@ -126,7 +126,7 @@
   "MIN_CHARGE_VALUE": "Minimale laadwaarde van {{value}} €.",
   "RANGE_CHARGE_VALUE": "Laadwaarde tussen {{min}} € en {{max}} €.",  
   "MAKE_PAYMENT_CONF_MSG": "Betaling bevestigen?",
-  "TOO_FAR_AWAY_MSG": "U moet in de was zijn om de aankoop te doen.",
+  "TOO_FAR_AWAY_MSG": "U moet zich in de wasruimte bevinden of de locatie inschakelen om de aankoop te doen.",
   "LOCATION_IS_DISABLED": "U moet toegang geven tot uw locatie om de aankoop te doen.",
   "SELECT_PAYMENT_METHOD": "Selecteer een oplaadmethode", 
   "PAYPAL": "Paypal",

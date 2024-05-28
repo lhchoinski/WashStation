@@ -126,7 +126,7 @@
   "MIN_CHARGE_VALUE": "Minimum loading value of {{ value }}€.",
   "RANGE_CHARGE_VALUE": "Charging value between {{ min }}€ and {{ max }}€.",  
   "MAKE_PAYMENT_CONF_MSG": "Confirm payment?",
-  "TOO_FAR_AWAY_MSG": "You need to be inside the laundry to make the purchase.",
+  "TOO_FAR_AWAY_MSG": "You need to be inside the laundry room or enable location to make the purchase.",
   "LOCATION_IS_DISABLED": "You need to give access to your location to make the purchase.",
   "SELECT_PAYMENT_METHOD": "Select a method of recharge", 
   "PAYPAL": "Paypal",
