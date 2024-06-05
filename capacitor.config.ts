@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.example.app',
-  appName: 'washstation-mob-app',
+  appId: 'com.kipay.app',
+  appName: 'kipay',
   webDir: 'www',
   bundledWebRuntime: false, // Altere para true se estiver usando uma web runtime embutida
   cordova: {

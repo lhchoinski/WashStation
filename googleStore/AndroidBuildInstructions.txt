@@ -1,8 +1,0 @@
-Instruction Link: https://ionicframework.com/docs/intro/deploying/
-
-Command to build the app for Android Store:
- - ionic cordova build android --prod --release
- - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore washstation-release-key.jks app-release-unsigned.apk washstation-alias
- - zipalign -v 4 app-release-unsigned.apk washstation-app.apk
- 
-App Certificate´s Passphrase: washstationInvoke2015
